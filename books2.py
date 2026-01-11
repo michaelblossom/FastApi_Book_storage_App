@@ -1,6 +1,7 @@
-from fastapi  import FastAPI, HTTPException,Body
+from fastapi  import FastAPI, HTTPException,Body,Path,Query
 from pydantic import BaseModel,Field
 from typing import List, Optional
+from starlette import status   
 app = FastAPI()
 
 class Book():
@@ -55,26 +56,26 @@ BOOKS = [
     Book(id=6, title="The Da Vinci Code", author="Dan Brown", description="Mystery thriller", rating=4, published_date=2003),
 ]
 
-@app.get("/books")
+@app.get("/books", status_code=status.HTTP_200_OK)
 async def read_all_books():
     return BOOKS
 
-@app.get("/books/{book_id}")
-async def read_book(book_id: int):
+@app.get("/books/{book_id}", status_code=status.HTTP_200_OK)
+async def read_book(book_id: int = Path(gt=0)):
     for book in BOOKS:
         if book.id == book_id:
             return book
-    # raise HTTPException(status_code=404, detail="Book not found")
+    raise HTTPException(status_code=404, detail="Book not found")
 
-@app.get("/books/")
-async def read_book_by_rating(rating: int):
+@app.get("/books/", status_code=status.HTTP_200_OK)
+async def read_book_by_rating(rating: int = Query(ge=1, le=5)):
     result = []
     for book in BOOKS:
         if book.rating == rating:
             result.append(book)
     return result
 
-@app.post("/books")
+@app.post("/books", status_code=status.HTTP_201_CREATED)
 async def create_book(book: BookRequest ):
     new_book = Book(**book.dict())
     BOOKS.append(find_book_id(new_book))
@@ -88,9 +89,17 @@ def find_book_id(book:Book):
         book.id = 1
     return book
 
-@app.put("/books/update_book")
+@app.put("/books/update_book",status_code=status.HTTP_204_NO_CONTENT)
 async def update_book( book: BookRequest):
     for i in range(len(BOOKS)):
         if BOOKS[i].id == book.id:
             BOOKS[i] = Book(**book.dict())
             return BOOKS[i]
+
+
+@app.delete("/books/{book_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_book(book_id: int = Path(gt=0)):
+    for i in range(len(BOOKS)):
+        if BOOKS[i].id == book_id:
+            deleted_book = BOOKS.pop(i)
+            return {"message": "Book deleted successfully", "book": deleted_book}

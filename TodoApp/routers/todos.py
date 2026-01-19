@@ -33,7 +33,7 @@ class TodoRequest(BaseModel):
         "json_schema_extra": {
             "examples": [
                 {
-                    "title": "Buy groceries",
+                    "title": "List of things to buy",
                     "description": "Milk,gloceries, Bread, Eggs, Butter, biscuit",
                     "priority": 3,
                     "completed": False

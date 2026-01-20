@@ -68,7 +68,7 @@ async def create_todo(db: db_dependency, todo_request: TodoRequest):
 async def update_todo(db: db_dependency, todo_id: int = Path(gt=0), todo_request: TodoRequest = ...):
     todo = db.query(Todos).filter(Todos.id == todo_id).first()
     if not todo:
-        raise HTTPException(status_code=404, detail=f"Todo with id {todo_id} not found")
+        raise HTTPException(status_code=404, detail=f"No Todo with id {todo_id} found")
     todo.title = todo_request.title
     todo.description = todo_request.description
     todo.priority = todo_request.priority
@@ -85,4 +85,4 @@ async def delete_todo(db: db_dependency, todo_id: int = Path(gt=0)):
         raise HTTPException(status_code=404, detail=f"Todo with id {todo_id} not found")
     db.delete(todo)
     db.commit()
-    return {"detail": f"Todo with id {todo_id} deleted successfully"}
+    return {"detail": f"Todo with id {todo_id} has been deleted successfully"}

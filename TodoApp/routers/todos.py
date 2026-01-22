@@ -27,6 +27,7 @@ class TodoRequest(BaseModel):
     title: str = Field(min_length=3)
     description: str = Field(min_length=13, max_length=50)
     priority: int = Field(ge=1, le=5)
+    duration: int = Field(ge=1)
     completed: bool = False
 
     model_config = {
@@ -36,6 +37,7 @@ class TodoRequest(BaseModel):
                     "title": "List of things to buy",
                     "description": "Milk,gloceries, Bread, Eggs, Butter, biscuit cheeseballs",
                     "priority": 4,
+                    "duration": 3,
                     "completed": False
                 }
             ]

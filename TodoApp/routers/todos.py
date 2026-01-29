@@ -35,7 +35,7 @@ class TodoRequest(BaseModel):
             "examples": [
                 {
                     "title": "Lisprovissions to buy",
-                    "description": "Milk, Tea, Cerelac, Sugar, biscuit",
+                    "description": "Milk, Tea, Cerelac, Sugar, biscuit, golden-morn",
                     "priority": 4,
                     "duration": 3,
                     "completed": False

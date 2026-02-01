@@ -34,7 +34,7 @@ class TodoRequest(BaseModel):
         "json_schema_extra": {
             "examples": [
                 {
-                    "title": "Lisprovissions to buy",
+                    "title": "List of provisions to buy",
                     "description": "Milk, Tea, Cerelac, Sugar, biscuit, golden-morn",
                     "priority": 4,
                     "duration": 3,

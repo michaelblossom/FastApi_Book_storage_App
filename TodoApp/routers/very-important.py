@@ -1,1 +1,0 @@
-the code below is from billing.py file under endpoint folder

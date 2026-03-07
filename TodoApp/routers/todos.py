@@ -35,7 +35,7 @@ class TodoRequest(BaseModel):
             "examples": [
                 {
                     "title": "List of provisions to buy",
-                    "description": "Milk, Tea, bread,biscuit,corn-flakes,chocolate,sugar,cake",
+                    "description": "Milk, Tea, bread,biscuit,corn-flakes,chocolate,sugar,garr5",
                     "priority": 4,
                     "duration": 4,
                     "completed": False

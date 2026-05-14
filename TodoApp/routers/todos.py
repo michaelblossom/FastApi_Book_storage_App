@@ -25,7 +25,7 @@ db_dependency = Annotated[Session, Depends(get_db)]
 
 class TodoRequest(BaseModel):
     title: str = Field(min_length=3)
-    description: str = Field(min_length=10, max_length=60)
+    description: str = Field(min_length=10, max_length=50)
     priority: int = Field(ge=5, le=10)
     duration: int = Field(ge=1)
     completed: bool = False
@@ -37,7 +37,7 @@ class TodoRequest(BaseModel):
                     "title": "List of provisions to buy",
                     "description":"Milk,"
                     "detergent,Tea,bread,gesha,Butter,biscuit,corn-flakes,chocolate,sugar,soap,gloceries,water,oat",
-                    "priority":5,
+                    "priority":4,
                     "duration": 5,
                     "completed": False
                 }

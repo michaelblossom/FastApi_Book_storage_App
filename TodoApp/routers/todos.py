@@ -38,7 +38,7 @@ class TodoRequest(BaseModel):
                     "description":"Milk,"
                     "detergent,Tea,bread,gesha,Butter,biscuit,corn-flakes,chocolate,sugar,soap,gloceries,water,oat",
                     "priority":5,
-                    "duration": 5,
+                    "duration": 4,
                     "completed": False
                 }
             ]

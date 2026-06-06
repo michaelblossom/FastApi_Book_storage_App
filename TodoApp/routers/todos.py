@@ -36,7 +36,7 @@ class TodoRequest(BaseModel):
                 {
                     "title": "List of provisions to buy",
                     "description":"The things that need to be bought include detergent, Tea, bread, gesha, Butter, biscuit, corn-flakes, chocolate, sugar, soap, groceries, water, oat",
-                    "priority":5,
+                    "priority":4,
                     "duration": 4,
                     "completed": False
                 }

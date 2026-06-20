@@ -27,7 +27,7 @@ class TodoRequest(BaseModel):
     title: str = Field(min_length=4)
     description: str = Field(min_length=9, max_length=51)
     priority: int = Field(ge=4, le=9)
-    duration: int = Field(ge=5)
+    duration: int = Field(ge=4)
     completed: bool = False
 
     model_config = {

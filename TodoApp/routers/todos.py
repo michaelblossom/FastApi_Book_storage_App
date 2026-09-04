@@ -24,7 +24,7 @@ def get_db():
 db_dependency = Annotated[Session, Depends(get_db)]
 
 class TodoRequest(BaseModel):
-    title: str = Field(min_length=9, max_length=21)
+    title: str = Field(min_length=10, max_length=21)
     description: str = Field(min_length=9, max_length=51)
     priority: int = Field(ge=4, le=9)
     duration: int = Field(ge=4, le=9)
